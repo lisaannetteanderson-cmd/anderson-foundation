@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Multi-Route Onboarding</title>
+    <!-- Core External Secure Libraries -->
+    <script src="https://jsdelivr.net"></script>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 550px; margin: 40px auto; padding: 20px; background-color: #f8f9fa; color: #212529; }
+        .card { background: white; border: 1px solid #dee2e6; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .secure-banner { background-color: #e3f2fd; color: #0d47a1; padding: 12px; font-weight: bold; border-radius: 6px; margin-bottom: 20px; font-size: 14px; text-align: center; }
+        .form-group { margin-bottom: 18px; }
+        .form-row { display: flex; gap: 15px; }
+        .form-row .form-group { flex: 1; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 15px; }
+        input:focus, select:focus { border-color: #86b7fe; outline: 0; box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); }
+        .checkbox-container { display: flex; align-items: center; gap: 8px; margin: 10px 0 20px 0; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .checkbox-container input { width: auto; cursor: pointer; }
+        button { background-color: #0d6efd; color: white; border: none; padding: 14px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:disabled { background-color: #6c757d; cursor: not-allowed; }
+        .hidden { display: none; }
+        .error-msg { color: #dc3545; font-size: 14px; margin-top: 5px; font-weight: 500; }
+        .success-screen { text-align: center; padding: 20px 10px; }
+        .success-icon { font-size: 50px; color: #198754; margin-bottom: 15px; }
+        .success-title { color: #198754; margin-top: 0; }
+        h4 { margin: 30px 0 15px 0; color: #dc3545; border-bottom: 1px dashed #dee2e6; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="secure-banner">🔒 Local Browser Encryption Layer Enabled</div>
+
+    <!-- STEP 1: GATEWAY PASSWORD SCREEN -->
+    <div id="gateScreen">
+        <h2 style="margin-top:0; margin-bottom: 10px;">Portal Authentication</h2>
+        <p style="font-size: 14px; color: #6c757d; margin-bottom: 20px;">Please enter the company access code provided by HR to open the verification form.</p>
+        <div class="form-group">
+            <label>Access Code</label>
+            <input type="password" id="gatePassword" placeholder="Enter password">
+            <div id="passwordError" class="error-msg hidden">Incorrect password. Please verify with HR.</div>
+        </div>
+        <button type="button" id="unlockBtn">Unlock Portal</button>
+    </div>
+
+    <!-- STEP 2: ENCRYPTED INTAKE FORM (Initially Hidden) -->
+    <div id="formScreen" class="hidden">
+        <h2 style="margin-top:0; margin-bottom: 20px;">Employee Onboarding Intake</h2>
+        
+        <form id="onboardingForm">
+            <!-- Basic Information -->
+            <div class="form-group">
+                <label>Legal Full Name</label>
+                <input type="text" id="empName" placeholder="Jane Doe" required>
+            </div>
+            <div class="form-group">
+                <label>Personal Email</label>
+                <input type="email" id="empEmail" placeholder="jane.doe@example.com" required>
+            </div>
+            
+            <!-- Identification Box -->
+            <h4>Identification Details</h4>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Driver's License / State ID #</label>
+                    <input type="text" id="idNumber" placeholder="ID Number" required>
+                </div>
+                <div class="form-group" style="flex: 0 0 130px;">
+                    <label>Issuing State</label>
+                    <input type="text" id="idState" placeholder="e.g. CA" maxlength="2" required>
+                </div>
+            </div>
+
+            <!-- Home Address Box -->
+            <h4>Home Address</h4>
+            <div class="form-group">
+                <label>Street Address</label>
+                <input type="text" id="homeStreet" placeholder="123 Main St" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="homeCity" placeholder="City" required>
+                </div>
+                <div class="form-group" style="flex: 0 0 100px;">
+                    <label>State</label>
+                    <input type="text" id="homeState" placeholder="ST" maxlength="2" required>
+                </div>
+                <div class="form-group" style="flex: 0 0 130px;">
+                    <label>ZIP Code</label>
+                    <input type="text" id="homeZip" placeholder="12345" required>
+                </div>
+            </div>
+
+            <!-- Billing Address Box -->
+            <h4>Billing Address</h4>
+            <label class="checkbox-container">
+                <input type="checkbox" id="sameAsHome"> Same as Home Address
+            </label>
+            
+            <div id="billingFields">
+                <div class="form-group">
+                    <label>Street Address</label>
+                    <input type="text" id="billingStreet" placeholder="123 Main St" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" id="billingCity" placeholder="City" required>
+                    </div>
+                    <div class="form-group" style="flex: 0 0 100px;">
+                        <label>State</label>
+                        <input type="text" id="billingState" placeholder="ST" maxlength="2" required>
+                    </div>
+                    <div class="form-group" style="flex: 0 0 130px;">
+                        <label>ZIP Code</label>
+                        <input type="text" id="billingZip" placeholder="12345" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Details -->
+            <h4>Financial & Payroll Details</h4>
+            <div class="form-group">
+                <label>Social Security Number (SSN)</label>
+                <input type="password" id="ssn" placeholder="000-00-0000" pattern="\d{3}-\d{2}-\d{4}" title="Please enter format: 000-00-0000" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Bank Account Number</label>
+                    <input type="password" id="accountNum" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label>Bank Routing Number</label>
+                    <input type="text" id="routingNum" pattern="\d{9}" title="Must be exactly 9 digits long" maxlength="9" required>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn">Lock & Send Securely</button>
+        </form>
+    </div>
+
+    <!-- STEP 3: WELCOME / THANK YOU SCREEN (Initially Hidden) -->
+    <div id="successScreen" class="success-screen hidden">
+        <div class="success-icon">🎉</div>
+        <h2 class="success-title">Welcome to the Team!</h2>
+        <p style="font-size: 16px; line-height: 1.5; color: #495057;">
+            Thank you for completing your onboarding details. Your sensitive parameters have been encrypted successfully and routed straight into the corporate HR database logs.
+        </p>
+        <p style="font-size: 14px; color: #6c757d; margin-top: 25px;">
+            You may now safely close this browser window tab.
+        </p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
