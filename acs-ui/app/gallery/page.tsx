@@ -1,1 +1,47 @@
-import type { Metadata } from 'next'; import { Header, Footer } from '../components/SiteChrome'; export const metadata: Metadata={title:'Gallery | Anderson Cleaning Services'}; export default function Gallery(){return <><Header active="Gallery"/><main><section className="page-hero"><p className="eyebrow">GALLERY</p><h1>See the difference, room by room.</h1><p className="lead">A selection of bright, clean spaces and before-and-after examples that reflect the Anderson standard.</p></section><section className="content-section"><div className="gallery-page-grid"><div className="tile" style={{backgroundImage:"url('https://images.pexels.com/photos/4107284/pexels-photo-4107284.jpeg?auto=compress&cs=tinysrgb&w=1000')"}}/><div className="tile" style={{backgroundImage:"url('https://images.pexels.com/photos/4108278/pexels-photo-4108278.jpeg?auto=compress&cs=tinysrgb&w=800')"}}/><div className="tile" style={{backgroundImage:"url('https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800')"}}/><div className="tile" style={{backgroundImage:"url('https://images.pexels.com/photos/4239146/pexels-photo-4239146.jpeg?auto=compress&cs=tinysrgb&w=800')"}}/><div className="tile" style={{backgroundImage:"url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800')"}}/><div className="tile" style={{backgroundImage:"url('https://images.pexels.com/photos/6585751/pexels-photo-6585751.jpeg?auto=compress&cs=tinysrgb&w=800')"}}/></div></section></main><Footer/></>}
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Header, Footer } from '../components/SiteChrome';
+
+export const metadata: Metadata = {
+  title: 'Gallery | Anderson Cleaning Services',
+  description: 'See the Anderson Cleaning Services difference in our before-and-after and completed job photos.',
+};
+
+const tiles = [
+  { cls: 'g1', tag: undefined },
+  { cls: 'g2', tag: undefined },
+  { cls: 'g3', tag: undefined },
+  { cls: 'gbefore', tag: 'Before' },
+  { cls: 'gafter', tag: 'After' },
+  { cls: 'g4', tag: undefined },
+  { cls: 'g5', tag: undefined },
+  { cls: 'g6', tag: undefined },
+];
+
+export default function GalleryPage() {
+  return (
+    <>
+      <Header active="Gallery" />
+      <main>
+        <section className="page-hero">
+          <div className="wrap">
+            <p className="eyebrow">Gallery</p>
+            <h1>See the difference, room by room.</h1>
+            <p className="lead">
+              A look at recent work — kitchens, bathrooms, living spaces, and the before-and-after
+              moments our clients love most.
+            </p>
+          </div>
+        </section>
+
+        <section className="services">
+          <div className="wrap">
+            <ul className="full-gallery-grid">
+              {tiles.map((t, i) => (
+                <li key={i} className={`ph gtile ${t.cls}`}>
+                  {t.tag && <span className="tag">{t.tag}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ���q�^
