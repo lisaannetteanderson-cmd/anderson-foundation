@@ -1,1 +1,59 @@
-'use client'; import { useState } from 'react'; import { Header, Footer } from '../components/SiteChrome'; export default function Contact(){const [sent,setSent]=useState(false);return <><Header active="Contact"/><main><section className="page-hero"><p className="eyebrow">CONTACT</p><h1>Let’s get your space cleaner.</h1><p className="lead">Tell us what you need and we’ll help you choose the right service.</p></section><section className="content-section"><div className="contact-grid"><div><h2>Request a Free Quote</h2><p>Anderson Cleaning Services serves Palmdale and surrounding communities. Use the form and we’ll follow up with next steps.</p><p><strong>Email:</strong> info@andersoncleaningservices.com</p></div><div className="form-card">{sent?<><h3>Request received</h3><p>Thank you. We’ll follow up using the contact information you provided.</p></>:<form onSubmit={e=>{e.preventDefault();setSent(true)}}><label>Name</label><input required name="name"/><label>Email</label><input required type="email" name="email"/><label>Service</label><select name="service"><option>Residential Cleaning</option><option>Commercial Cleaning</option><option>Deep Cleaning</option><option>Move-In / Move-Out</option><option>Recurring Cleaning</option><option>Customized Cleaning Plan</option></select><label>Message</label><textarea name="message"/><button className="btn btn-primary" type="submit">Request a Quote</button></form>}</div></div></section></main><Footer/></>}
+'use client';
+
+import { useState, type FormEvent } from 'react';
+import { Header, Footer } from '../components/SiteChrome';
+
+type ContactState = {
+  name: string;
+  email: string;
+  phone: string;
+  serviceType: string;
+  message: string;
+};
+
+const initialState: ContactState = {
+  name: '',
+  email: '',
+  phone: '',
+  serviceType: '',
+  message: '',
+};
+
+export default function ContactPage() {
+  const [form, setForm] = useState<ContactState>(initialState);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  function update<K extends keyof ContactState>(key: K, value: ContactState[K]) {
+    setForm((prev) => ({ ...prev, [key]: value }));
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setError('');
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'contact', ...form }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setError(data.error || 'Something went wrong. Please try again.');
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <>
+      <Header active="Contact" />
+      <main>
+        <section className="page���q�^
