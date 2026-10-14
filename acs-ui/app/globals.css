@@ -68,3 +68,20 @@ p { margin-top: 0; }
   .btn { white-space: normal; text-align: center; }
   .footer-in { align-items: flex-start; flex-direction: column; }
 }
+
+
+/* Accessible application and contact form controls */
+.form-field { display: flex; flex-direction: column; gap: 7px; color: var(--ink); font-size: .94rem; font-weight: 650; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%; min-width: 0; border: 1px solid #b9ccdc; border-radius: 10px;
+  padding: 12px 13px; background: #fff; color: var(--ink); font: inherit; font-weight: 400;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  outline: 3px solid #b9e0fb; border-color: var(--blue);
+}
+.form-field textarea { resize: vertical; }
+.form-field input[type="checkbox"] { width: 18px; min-height: 18px; padding: 0; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.5fr); gap: 24px; align-items: start; }
+@media (max-width: 760px) {
+  .contact-layout { grid-template-columns: minmax(0, 1fr) !important; }
+}
