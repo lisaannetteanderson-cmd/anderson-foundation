@@ -28,8 +28,8 @@ p { margin-top: 0; }
 
 .site-header { position: sticky; top: 0; z-index: 10; background: #fff; box-shadow: 0 1px 0 var(--line); }
 .header-in { display: flex; align-items: center; gap: 26px; min-height: 88px; padding-block: 12px; }
-.logo { flex: 0 0 210px; }
-.logo img { width: 210px; max-height: 60px; object-fit: contain; }
+.logo { flex: 0 0 250px; min-width: 0; }
+.logo img { width: 250px; max-height: 64px; object-fit: contain; object-position: left center; }
 .header-in nav { display: flex; align-items: center; justify-content: center; gap: 18px; flex: 1; flex-wrap: wrap; }
 .header-in nav a, .footer-in nav a { font-size: .94rem; font-weight: 600; }
 .header-in nav a:hover, .header-in nav a.active { color: var(--blue); }
@@ -162,8 +162,8 @@ p { margin-top: 0; }
 .btn:focus-visible, .menu-toggle:focus-visible, .main-navigation a:focus-visible { outline: 3px solid #8acafa; outline-offset: 3px; }
 @media (max-width: 1080px) {
   .header-in { gap: 16px; }
-  .logo { flex-basis: 180px; }
-  .logo img { width: 180px; }
+  .logo { flex-basis: 220px; }
+  .logo img { width: 220px; }
   .header-in nav { gap: 12px; }
   .header-in nav a { font-size: .88rem; }
   .header-cta { padding-inline: 14px; }
@@ -173,8 +173,8 @@ p { margin-top: 0; }
   html { scroll-padding-top: 82px; }
   body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
   .header-in { min-height: 72px; flex-wrap: nowrap; justify-content: space-between; gap: 12px; padding-block: 10px; }
-  .logo { flex: 0 1 178px; min-width: 0; }
-  .logo img { width: 100%; max-height: 50px; }
+  .logo { flex: 0 1 195px; min-width: 0; }
+  .logo img { width: 100%; max-height: 54px; object-fit: contain; object-position: left center; }
   .menu-toggle { display: block; flex: 0 0 44px; }
   .header-actions { display: none; }
   .header-in .main-navigation { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 16px 16px; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); box-shadow: 0 14px 24px rgba(16,40,73,.12); }
