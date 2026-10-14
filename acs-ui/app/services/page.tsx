@@ -56,7 +56,7 @@ export default function ServicesPage() {
             <p className="eyebrow">Our services</p>
             <h1>A cleaner space, built around you.</h1>
             <p className="lead">From routine upkeep to a more detailed refresh, explore cleaning options for homes and workplaces in the Palmdale area.</p>
-            <Link href="/contact" className="btn btn-primary" style={{ marginTop: 22 }}>Request a quote</Link>
+            <Link href="/quote" className="btn btn-primary" style={{ marginTop: 22 }}>Request a quote</Link>
           </div>
         </section>
         <section className="services">
@@ -70,7 +70,7 @@ export default function ServicesPage() {
                   <ul style={{ paddingLeft: 20, marginTop: 14, marginBottom: 22 }}>
                     {service.tasks.map((task) => <li key={task} style={{ marginBottom: 7 }}>{task}</li>)}
                   </ul>
-                  <div style={{ marginTop: 'auto' }}><Link href="/contact" className="btn btn-outline">Ask about this service</Link></div>
+                  <div style={{ marginTop: 'auto' }}><Link href="/quote" className="btn btn-outline">Ask about this service</Link></div>
                 </article>
               ))}
             </div>
@@ -78,7 +78,7 @@ export default function ServicesPage() {
               <p style={{ color: '#9dd7ff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.12em' }}>Not sure what you need?</p>
               <h2 style={{ color: '#fff', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', marginTop: 8 }}>Let’s find the right cleaning plan.</h2>
               <p style={{ color: '#e3edf7', maxWidth: 700, marginTop: 12 }}>Share the type of space, your priorities, and preferred timing. We’ll discuss the scope and next steps with you.</p>
-              <Link href="/contact" className="btn btn-primary" style={{ marginTop: 18 }}>Contact Anderson Cleaning Services</Link>
+              <Link href="/quote" className="btn btn-primary" style={{ marginTop: 18 }}>Contact Anderson Cleaning Services</Link>
             </div>
           </div>
         </section>

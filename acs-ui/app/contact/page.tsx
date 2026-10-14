@@ -43,8 +43,8 @@ export default function ContactPage() {
               <h1>We’re here to help.</h1>
               <p className="lead">Request a quote, ask about a service, or send a question to Anderson Cleaning Services. Tell us what you need and we’ll review your message.</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 24 }}>
-                <Link href="/services" className="btn btn-primary">Explore services</Link>
-                <Link href="/careers" className="btn btn-outline">Join our team</Link>
+                <Link href="/quote" className="btn btn-primary">Get a Free Quote</Link>
+                <a href="tel:+13462071721" className="btn btn-outline">Call (346) 207-1721</a>
               </div>
             </div>
             <div style={{ minHeight: 260, borderRadius: 22, overflow: 'hidden', background: '#dcecf8' }}>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               <p>We serve the Palmdale area and nearby routes, subject to service availability.</p>
               <div style={{ marginTop: 20, paddingTop: 18, borderTop: '1px solid #d5e3ee' }}>
                 <strong>Service area</strong>
-                <p style={{ marginTop: 6 }}>Palmdale and surrounding communities</p>
+                <p style={{ marginTop: 6 }}>Palmdale and surrounding communities</p><p style={{ marginTop: 8 }}><strong>Phone</strong><br /><a href="tel:+13462071721">(346) 207-1721</a></p>
               </div>
               <div style={{ marginTop: 18 }}>
                 <strong>Looking for work?</strong>
