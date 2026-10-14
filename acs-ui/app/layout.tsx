@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://anderson-cleaning-services.vercel.app'),
   title: {
     default: 'Anderson Cleaning Services | Professional Cleaning in Palmdale',
-    template: '%s | Anderson Cleaning Services',
+    template: '%s',
   },
   description: 'Request a free quote for residential and commercial cleaning from Anderson Cleaning Services serving Palmdale and surrounding communities.',
   applicationName: 'Anderson Cleaning Services',
