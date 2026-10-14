@@ -53,7 +53,7 @@ export default function ContactPage() {
           </div>
         </section>
         <section className="services">
-          <div className="wrap" className="contact-layout">
+          <div className="wrap contact-layout">
             <aside style={{ padding: 26, border: '1px solid #d5e3ee', borderRadius: 18, background: '#fff' }}>
               <p className="eyebrow">Anderson Cleaning Services</p>
               <h2 style={{ fontSize: '1.6rem', margin: '10px 0' }}>How can we help?</h2>
