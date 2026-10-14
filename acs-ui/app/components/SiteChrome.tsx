@@ -19,7 +19,7 @@ export function Header({ active = 'Home' }: { active?: string }) {
     <header className="site-header">
       <div className="wrap header-in">
         <Link href="/" className="logo" aria-label="Anderson Cleaning Services home" onClick={() => setMenuOpen(false)}>
-          <img src="/logo.png" alt="Anderson Cleaning Services" width={700} height={168} />
+          <img src="/logo.jpg" alt="Anderson Cleaning Services" width={336} height={76} />
         </Link>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>
           <span></span><span></span><span></span>
