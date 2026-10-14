@@ -14,19 +14,14 @@ export function Header({ active = 'Home' }: { active?: string }) {
     <header className="site-header">
       <div className="wrap header-in">
         <Link href="/" className="logo" aria-label="Anderson Cleaning Services home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="Anderson Cleaning Services" width={700} height={168} />
         </Link>
-        <nav aria-label="Main">
-          {links.map((l) => (
-            <Link key={l.label} href={l.href} className={l.label === active ? 'active' : undefined}>
-              {l.label}
-            </Link>
+        <nav aria-label="Main navigation">
+          {links.map((link) => (
+            <Link key={link.label} href={link.href} className={link.label === active ? 'active' : undefined}>{link.label}</Link>
           ))}
         </nav>
-        <Link href="/contact" className="btn btn-primary header-cta">
-          Get a Free Quote
-        </Link>
+        <Link href="/contact" className="btn btn-primary header-cta">Get a Free Quote</Link>
       </div>
     </header>
   );
@@ -37,7 +32,13 @@ export function Footer() {
     <footer className="site-footer">
       <div className="wrap footer-in">
         <Link href="/" className="footer-logo" aria-label="Anderson Cleaning Services home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-light.png" alt="Anderson Cleaning Services" width={430} height={106} />
         </Link>
-        <nav ar���q�^
+        <nav aria-label="Footer navigation">
+          {links.map((link) => <Link key={link.label} href={link.href}>{link.label}</Link>)}
+        </nav>
+        <p>Anderson Cleaning Services</p>
+      </div>
+    </footer>
+  );
+}
