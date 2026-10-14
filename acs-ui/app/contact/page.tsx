@@ -1,59 +1,42 @@
-'use client';
-
-import { useState, type FormEvent } from 'react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Header, Footer } from '../components/SiteChrome';
 
-type ContactState = {
-  name: string;
-  email: string;
-  phone: string;
-  serviceType: string;
-  message: string;
-};
-
-const initialState: ContactState = {
-  name: '',
-  email: '',
-  phone: '',
-  serviceType: '',
-  message: '',
+export const metadata: Metadata = {
+  title: 'Contact | Anderson Cleaning Services',
+  description: 'Contact Anderson Cleaning Services about cleaning options in the Palmdale area.',
 };
 
 export default function ContactPage() {
-  const [form, setForm] = useState<ContactState>(initialState);
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
-
-  function update<K extends keyof ContactState>(key: K, value: ContactState[K]) {
-    setForm((prev) => ({ ...prev, [key]: value }));
-  }
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setError('');
-    setSubmitting(true);
-    try {
-      const res = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'contact', ...form }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        setError(data.error || 'Something went wrong. Please try again.');
-        return;
-      }
-      setSubmitted(true);
-    } catch {
-      setError('Something went wrong. Please try again.');
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   return (
     <>
       <Header active="Contact" />
       <main>
-        <section className="page���q�^
+        <section className="page-hero">
+          <div className="wrap">
+            <p className="eyebrow">Contact us</p>
+            <h1>Let’s make your space feel fresh.</h1>
+            <p className="lead">Tell us about your cleaning needs and preferred timing. We can discuss service options and next steps.</p>
+            <Link href="/services" className="btn btn-primary" style={{ marginTop: 22 }}>Explore services</Link>
+          </div>
+        </section>
+        <section className="services">
+          <div className="wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 22 }}>
+            <article style={{ padding: 28, border: '1px solid #d5e3ee', borderRadius: 18, background: '#fff' }}>
+              <p className="eyebrow">Get in touch</p>
+              <h2 style={{ fontSize: '1.7rem', marginTop: 10 }}>Request a quote</h2>
+              <p style={{ marginTop: 12 }}>Please use the contact details provided by your service representative to ask about scheduling, service options, and a quote.</p>
+            </article>
+            <article style={{ padding: 28, borderRadius: 18, background: '#102849', color: '#fff' }}>
+              <p style={{ color: '#9dd7ff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '.12em' }}>Service area</p>
+              <h2 style={{ color: '#fff', fontSize: '1.7rem', marginTop: 10 }}>Palmdale and nearby routes</h2>
+              <p style={{ color: '#e3edf7', marginTop: 12 }}>Share the type of property and your priorities so we can discuss whether your location and requested service fit our schedule.</p>
+              <Link href="/gallery" className="btn btn-primary" style={{ marginTop: 20 }}>View our gallery</Link>
+            </article>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
