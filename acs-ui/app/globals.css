@@ -285,3 +285,21 @@ a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
   .btn, .home-service-card, .home-hero-image > img, .quote-hero-photo img, .header-in nav a::after { transition: none !important; }
 }
+
+
+/* Logo visibility fix: stable dimensions and readable fallback if an image fails */
+.logo { flex: 0 0 250px; min-width: 0; min-height: 60px; display: flex; align-items: center; }
+.logo img { display: block; width: 250px; height: 60px; max-width: 100%; max-height: 60px; object-fit: contain; object-position: left center; }
+.logo-wordmark { display: block; color: var(--navy); font-size: 1.1rem; line-height: 1.15; font-weight: 800; }
+.logo-wordmark strong { display: block; color: var(--blue); font-size: .92rem; }
+.footer-logo { display: inline-flex; align-items: center; min-height: 60px; }
+.footer-logo img { display: block; width: 210px; height: 60px; object-fit: contain; object-position: left center; }
+.footer-logo-wordmark { color: #fff; font-weight: 800; font-size: 1.05rem; }
+@media (max-width: 1080px) {
+  .logo { flex-basis: 220px; }
+  .logo img { width: 220px; }
+}
+@media (max-width: 760px) {
+  .logo { flex: 0 1 205px; min-height: 52px; }
+  .logo img { width: 205px; height: 52px; max-height: 52px; }
+}
