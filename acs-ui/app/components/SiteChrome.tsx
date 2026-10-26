@@ -15,11 +15,22 @@ const links = [
 
 export function Header({ active = 'Home' }: { active?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
   return (
     <header className="site-header">
       <div className="wrap header-in">
         <Link href="/" className="logo" aria-label="Anderson Cleaning Services home" onClick={() => setMenuOpen(false)}>
-          <img src="/logo.png" alt="Anderson Cleaning Services" width={336} height={76} />
+          {!logoFailed ? (
+            <img
+              src="/logo.png?v=20261026"
+              alt="Anderson Cleaning Services"
+              width={700}
+              height={168}
+              onError={() => setLogoFailed(true)}
+            />
+          ) : (
+            <span className="logo-wordmark">Anderson <strong>Cleaning Services</strong></span>
+          )}
         </Link>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}>
           <span></span><span></span><span></span>
@@ -39,12 +50,17 @@ export function Header({ active = 'Home' }: { active?: string }) {
 }
 
 export function Footer() {
+  const [logoFailed, setLogoFailed] = useState(false);
   return (
     <>
       <footer className="site-footer">
         <div className="wrap footer-in">
           <Link href="/" className="footer-logo" aria-label="Anderson Cleaning Services home">
-            <img src="/logo-light.png" alt="Anderson Cleaning Services" width={430} height={106} />
+            {!logoFailed ? (
+              <img src="/logo-light.png?v=20261026" alt="Anderson Cleaning Services" width={430} height={106} onError={() => setLogoFailed(true)} />
+            ) : (
+              <span className="footer-logo-wordmark">Anderson Cleaning Services</span>
+            )}
           </Link>
           <nav aria-label="Footer navigation">
             {links.map((link) => <Link key={link.label} href={link.href}>{link.label}</Link>)}
