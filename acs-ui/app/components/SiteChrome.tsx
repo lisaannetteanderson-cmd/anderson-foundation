@@ -22,7 +22,7 @@ export function Header({ active = 'Home' }: { active?: string }) {
         <Link href="/" className="logo" aria-label="Anderson Cleaning Services home" onClick={() => setMenuOpen(false)}>
           {!logoFailed ? (
             <img
-              src="/logo.png?v=20261026"
+              src="/logo.png?v=20261027"
               alt="Anderson Cleaning Services"
               width={700}
               height={168}
@@ -57,7 +57,7 @@ export function Footer() {
         <div className="wrap footer-in">
           <Link href="/" className="footer-logo" aria-label="Anderson Cleaning Services home">
             {!logoFailed ? (
-              <img src="/logo-light.png?v=20261026" alt="Anderson Cleaning Services" width={430} height={106} onError={() => setLogoFailed(true)} />
+              <img src="/logo-light.png?v=20261027" alt="Anderson Cleaning Services" width={430} height={106} onError={() => setLogoFailed(true)} />
             ) : (
               <span className="footer-logo-wordmark">Anderson Cleaning Services</span>
             )}
